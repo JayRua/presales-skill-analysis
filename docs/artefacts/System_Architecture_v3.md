@@ -10,6 +10,20 @@ descriptions are preserved to allow reprocessing as extraction logic improves.
 ## Data Layer
 PostgreSQL stores raw job data, normalised entities, and analytical outputs. The relational model
 supports aggregation, filtering, and trend analysis across roles, locations, and companies.
+## Data Layer Implementation
+The data layer is implemented using PostgreSQL with a versioned SQL migration approach.
+
+- Core and analytical tables are defined in:
+```
+db/schema/001_init.sql
+```
+- Core tables store raw and normalised job data.
+
+- Analytical tables store persisted insight outputs to ensure reproducibility and performance.
+
+- Raw job descriptions are preserved unchanged to support reprocessing as parsing logic evolves.  
+
+This approach ensures a clear separation between ingestion, processing, and analytics, while keeping the implementation simple and auditable.
 ## Application & Delivery Layer
 A FastAPI service exposes insight-driven endpoints, while a Streamlit dashboard enables
 interactive exploration and live demonstrations. Generated reports translate analytical results into

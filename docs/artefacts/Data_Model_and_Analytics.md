@@ -15,7 +15,7 @@ company (
 
 job_posting (
     id {pk},
-    company_id,
+    company_id {fk to company(id)},
     title,
     raw_description,
     source,
@@ -30,6 +30,7 @@ job_posting (
     parsed_at,
     created_at
 ) 
+// Raw job descriptions are preserved unchanged  
 // role_family → normalised grouping (SE, Pre-sales, etc.)  
 // work_mode → remote / hybrid / on-site  
 // parser_version → which logic produced derived fields  
@@ -47,8 +48,8 @@ skill (
 // created_at → audit  
 
 job_skill (
-    job_posting_id,
-    skill_id,
+    job_posting_id {fk to job_posting(id)},
+    skill_id {fk to skill(id)},
     is_required,
     matched_text,
     evidence_snippet,
@@ -63,8 +64,42 @@ skill_id → link to skill
 // created_at → audit  
 
 ## Analytical Tables: 
-analysis_question, analysis_result, report.
+analysis_question, analysis_result, report.  
+  
+analysis_question (
+    id {pk},
+    question,
+    created_at
+)  
+  
+analysis_result (
+    id {pk},
+    question_id {fk to analysis_question(id)},
+    result JSONB,
+    parameters JSONB,
+    generated_at
+)  
+  
+report (
+    id {pk},
+    report_type,
+    generated_at,
+    metadata JSONB
+)
+
+
+
 ## Design Principles: 
-Separation of raw data and insights, normalization of skills, and extensibility.
+- Clear separation between raw data, derived attributes, and analytical outputs
+
+- Skill normalisation via a canonical skill table
+
+- Schema designed for reprocessing, explainability, and extensibility
 ## Analytics Goals: 
 Identify top skills, compare cloud platforms, and surface hiring trends for junior SE roles.
+## Implementation Note
+The authoritative implementation of this model is the PostgreSQL migration:
+```
+db/schema/001_init.sql
+```
+
