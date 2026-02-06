@@ -54,3 +54,19 @@ Job postings are ingested via Python ETL pipelines, normalised and stored in a P
 
 ---
 This project mirrors how Solutions Engineers approach real customer problems: discover, design, deliver, and explain value.
+
+## Quickstart (Database)
+
+Start PostgreSQL:
+
+```bash
+docker compose -f docker/docker-compose.yml up -d
+```
+Apply schema:
+```
+docker exec -i presales_db psql -U presales -d presales < db/schema/001_init.sql
+```
+Run smoke test:
+```
+docker exec -i presales_db psql -U presales -d presales < db/schema/010_smoke_test.sql
+```

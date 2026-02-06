@@ -19,6 +19,12 @@ db/schema/001_init.sql
 ```
 - Core tables store raw and normalised job data.
 
+- PostgreSQL runs locally via Docker Compose:
+  `docker/docker-compose.yml`   
+
+- Schema integrity is validated using a smoke test script that inserts a minimal end-to-end record set (company → job_posting → skill → job_skill):
+  `db/schema/010_smoke_test.sql`  
+
 - Analytical tables store persisted insight outputs to ensure reproducibility and performance.
 
 - Raw job descriptions are preserved unchanged to support reprocessing as parsing logic evolves.  
