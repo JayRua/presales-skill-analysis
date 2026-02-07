@@ -60,28 +60,42 @@ st.set_page_config(page_title="Job Intake", layout="centered")
 st.title("Manual Job Intake")
 
 with st.form("job_intake_form", clear_on_submit=True):
-    st.subheader("Company")
-    company_name = st.text_input("Company name *")
-    company_type = st.selectbox("Company type (optional)", ["", "startup", "enterprise", "consultancy", "scale-up"])
-    industry = st.text_input("Industry (optional)")
-
-    st.subheader("Job posting")
     title = st.text_input("Job title *")
-    source = st.selectbox("Source *", ["LinkedIn", "Indeed", "Company site", "Wellfound", "Other"])
+    company_name = st.text_input("Company name *")
+
+    source = st.selectbox(
+        "Source *",
+        ["LinkedIn", "Indeed", "HiringCafe", "Company site", "irishjobs.ie", "Glassdoor", "builtindublin.ie ", "Other"],
+    )
+
     source_url = st.text_input("Job URL *")
+
+    raw_description = st.text_area(
+        "Full job description * (paste here)",
+        height=260,
+    )
+
     location = st.text_input("Location", value="Dublin")
+
     date_posted = st.date_input("Date posted (optional)", value=None)
     date_collected = st.date_input("Date collected *", value=date.today())
-    raw_description = st.text_area("Full job description * (paste here)", height=250)
+
+    company_type = st.selectbox(
+        "Company type (optional)",
+        ["", "startup", "enterprise", "consultancy", "scale-up"],
+    )
+
+    industry = st.text_input("Industry (optional)")
 
     submitted = st.form_submit_button("Save")
 
 if submitted:
-    errors = []
-    if not company_name.strip():
-        errors.append("Company name is required.")
+    errors: list[str] = []
+
     if not title.strip():
         errors.append("Job title is required.")
+    if not company_name.strip():
+        errors.append("Company name is required.")
     if not source_url.strip():
         errors.append("Job URL is required.")
     if not raw_description.strip() or len(raw_description.strip()) < 200:
