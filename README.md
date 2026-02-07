@@ -70,3 +70,44 @@ Run smoke test:
 ```
 docker exec -i presales_db psql -U presales -d presales < db/schema/010_smoke_test.sql
 ```
+## Run ingestion (Streamlit)
+Activate venv and install dependencies:
+
+```bash
+python3 -m venv .venv
+source .venv/bin/activate
+pip install -r requirements.txt
+```
+Export DB env vars (example):
+```
+export DB_HOST=localhost
+export DB_PORT=5432
+export DB_NAME=presales
+export DB_USER=presales
+export DB_PASSWORD=presales_pw
+```
+Run the intake app:
+```
+streamlit run ingestion/streamlit_intake.py
+```
+## Verify ingestion wrote to the database
+
+After submitting a job via the Streamlit intake form, you can verify the record was persisted in PostgreSQL.
+
+Run the following from the repo root:
+
+```bash
+docker exec -it presales_db psql -U presales -d presales -c "
+SELECT
+  jp.id,
+  jp.title,
+  c.company_name,
+  jp.source,
+  jp.source_url,
+  jp.date_collected
+FROM job_posting jp
+JOIN company c ON c.id = jp.company_id
+ORDER BY jp.id DESC
+LIMIT 5;
+"
+```

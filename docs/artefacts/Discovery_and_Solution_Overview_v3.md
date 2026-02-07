@@ -23,6 +23,23 @@ families. Insights are exposed through SQL queries, APIs, dashboards, and report
 Rather than scraping job boards, the system prioritises manual discovery followed by automated
 parsing. This approach reduces legal and technical risk, aligns with realistic data volumes for junior
 roles, and mirrors how real-world analysts often curate high-signal datasets.
+## Manual Intake (Streamlit)
+The ingestion approach is manual-first: the user pastes job details into a Streamlit form to create consistent, compliant job records without scraping.
+
+Final field order (optimised for fast repeated intake):
+1) Job title (required)
+2) Company name (required)
+3) Source (required, controlled list)
+4) Job URL (required)
+5) Full job description (required)
+6) Optional metadata: location, dates (posted/collected), company type, industry
+
+Rationale:
+- Mirrors real job discovery behaviour (job-first, then attribution).
+- Reduces friction by completing short identity fields before the long description.
+- Improves data quality and reduces partial records.
+Target: under 90 seconds per job entry.
+
 ## Success Criteria
 - Low-friction job intake (under 90 seconds per role)
 - Accurate skill and role normalisation

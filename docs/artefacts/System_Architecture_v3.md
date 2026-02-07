@@ -3,6 +3,11 @@
 Job postings are discovered manually from high-signal job boards and company career pages. A
 local Streamlit application serves as an intake interface, allowing users to paste job descriptions
 and minimal metadata (URL, company, title, location, source).
+### Ingestion (Streamlit manual intake)
+A Streamlit intake form writes directly to PostgreSQL (company and job_posting).
+The form is job-first to minimise friction: title → company → source → URL → description, then optional metadata.
+Source is selected from a controlled list to prevent typos and keep reporting consistent.
+
 ## Parsing & Normalisation Layer
 Python parsing logic processes the pasted job descriptions to infer seniority, work mode, role
 family, and extract technical and soft skills using a curated skill dictionary and aliases. Raw
