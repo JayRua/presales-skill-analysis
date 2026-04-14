@@ -42,25 +42,20 @@ business-facing outputs.
 
 ### Streamlit Dashboard (Implemented)
 
-A Streamlit-based dashboard has been implemented to provide a visual interface for exploring ingested job data.
+A Streamlit-based dashboard provides a visual interface for exploring and filtering ingested job data.
 
-The initial dashboard includes:
-
-- A tabular view of job postings (job_posting joined with company)
-- Interactive selection of individual jobs via a dropdown
-- A detailed job view displaying:
-  - Full raw job description (raw_description)
-  - Source URL
-  - Job title and company name
-
-This enables users to move from raw SQL-based inspection to an interactive exploration experience, improving usability and aligning with real-world analytics tooling.
+Features include:
+- **Interactive Company Filter:** Filter the dataset by company name from the main header.
+- **Dynamic Job Table:** A tabular view of job postings that updates based on active filters.
+- **Selection-based Detail View:** A dropdown to select specific jobs from the filtered list for deep-dive inspection.
+- **Rich Metadata Display:** Shows title, company, location, source, and collection date alongside the full raw description.
 
 Technical implementation:
-- Streamlit for UI rendering
-- psycopg2 for PostgreSQL connectivity
-- pandas for SQL query execution and data handling
+- Streamlit for UI rendering and state management.
+- psycopg2 for PostgreSQL connectivity.
+- pandas for efficient data retrieval and tabular display.
 
-File location: dashboard/jobs_view.py
+File location: `dashboard/streamlit_dashboard.py`
 
 This is the first implemented version of the “dashboard layer” in the system architecture.
 

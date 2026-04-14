@@ -22,17 +22,18 @@ families. Insights are exposed through SQL queries, APIs, dashboards, and report
 
 ### Dashboard Layer (Implemented)
 
-An initial Streamlit dashboard has been developed to enable interactive exploration of ingested job data.
+An interactive Streamlit dashboard enables exploration of ingested job data with built-in filtering.
 
 Key capabilities:
-- Visual table view of job postings
-- Selection-based job detail inspection
-- Full access to raw job descriptions without SQL queries
+- **Company-level filtering:** Isolate job postings by specific hiring companies.
+- **Visual table view:** Browse summary data for all or filtered job postings.
+- **Detail inspection:** Select individual jobs to view full descriptions and metadata.
+- **Direct source access:** Quick links to the original job listings.
 
 Impact:
-- Reduces reliance on direct SQL querying for data inspection
-- Improves accessibility for non-technical users
-- Enhances demonstration capability for Solutions Engineer-style presentations
+- Facilitates rapid competitive analysis and company-specific skill mapping.
+- Improves accessibility for non-technical users.
+- Provides a polished, interactive interface for Solutions Engineer-style demonstrations.
 
 This represents the first delivery of a user-facing analytics interface within the platform.
 

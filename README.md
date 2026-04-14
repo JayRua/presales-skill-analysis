@@ -119,30 +119,32 @@ In addition to the ingestion tool, a Streamlit dashboard is available to visuall
 ### Start the dashboard
 
 ```bash
-streamlit run dashboard/jobs_view.py
+streamlit run dashboard/streamlit_dashboard.py
 ```
 #### Features
-View all job postings in a table format
-Select a job to inspect full details
-View raw job descriptions directly in the UI
-Access original job source links
+- **Company Filtering:** Filter job postings by company name directly from the main view.
+- **Summary Table:** View all job postings (filtered or total) in a clean table format.
+- **Detailed Inspection:** Select a specific job to view its full metadata and description.
+- **Metadata Visibility:** View location, source, and collection date at a glance.
+- **Direct Links:** Access original job source links via the UI.
+
 #### Purpose
 
-This dashboard replaces the need for manual SQL queries when inspecting job data and provides a more intuitive, demo-ready interface for exploring the dataset.
+This dashboard provides a demo-ready interface for exploring the dataset, replacing manual SQL queries with an intuitive, interactive experience.
 
 
-## Milestone: First Dashboard Implementation
+## Milestone: Enhanced Dashboard Implementation
 
-Completed the first version of a user-facing dashboard using Streamlit.
+Completed the second version of the user-facing dashboard with interactive filtering.
 
 Transition achieved:
-- From: SQL-only data inspection
-- To: Interactive UI-based exploration
+- From: Basic job list and detail view
+- To: Filterable, multi-component analytics interface
 
 Key outcome:
-- Users can now browse jobs and view full descriptions without writing queries
+- Users can now isolate jobs by company and drill down into specific listings more efficiently.
 
 Next steps:
-- Add filtering (role_family, seniority, company_type)
-- Integrate extracted skills (job_skill)
-- Build multi-page dashboard structure
+- Add additional filters (role_family, seniority, work_mode)
+- Integrate extracted skills (job_skill) visualization
+- Implement aggregate analytics (top skills chart, cloud demand)
