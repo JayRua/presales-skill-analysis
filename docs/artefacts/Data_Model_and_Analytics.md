@@ -30,6 +30,9 @@ job_posting (
     parsed_at,
     created_at
 ) 
+
+// raw_description → used in dashboard for full job detail view
+
 // Raw job descriptions are preserved unchanged  
 // role_family → normalised grouping (SE, Pre-sales, etc.)  
 // work_mode → remote / hybrid / on-site  

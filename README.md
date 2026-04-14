@@ -111,3 +111,38 @@ ORDER BY jp.id DESC
 LIMIT 5;
 "
 ```
+
+## Run Dashboard (Job Viewer)
+
+In addition to the ingestion tool, a Streamlit dashboard is available to visually explore job data.
+
+### Start the dashboard
+
+```bash
+streamlit run dashboard/jobs_view.py
+```
+#### Features
+View all job postings in a table format
+Select a job to inspect full details
+View raw job descriptions directly in the UI
+Access original job source links
+#### Purpose
+
+This dashboard replaces the need for manual SQL queries when inspecting job data and provides a more intuitive, demo-ready interface for exploring the dataset.
+
+
+## Milestone: First Dashboard Implementation
+
+Completed the first version of a user-facing dashboard using Streamlit.
+
+Transition achieved:
+- From: SQL-only data inspection
+- To: Interactive UI-based exploration
+
+Key outcome:
+- Users can now browse jobs and view full descriptions without writing queries
+
+Next steps:
+- Add filtering (role_family, seniority, company_type)
+- Integrate extracted skills (job_skill)
+- Build multi-page dashboard structure

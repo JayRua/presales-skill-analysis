@@ -39,6 +39,31 @@ This approach ensures a clear separation between ingestion, processing, and anal
 A FastAPI service exposes insight-driven endpoints, while a Streamlit dashboard enables
 interactive exploration and live demonstrations. Generated reports translate analytical results into
 business-facing outputs.
+
+### Streamlit Dashboard (Implemented)
+
+A Streamlit-based dashboard has been implemented to provide a visual interface for exploring ingested job data.
+
+The initial dashboard includes:
+
+- A tabular view of job postings (job_posting joined with company)
+- Interactive selection of individual jobs via a dropdown
+- A detailed job view displaying:
+  - Full raw job description (raw_description)
+  - Source URL
+  - Job title and company name
+
+This enables users to move from raw SQL-based inspection to an interactive exploration experience, improving usability and aligning with real-world analytics tooling.
+
+Technical implementation:
+- Streamlit for UI rendering
+- psycopg2 for PostgreSQL connectivity
+- pandas for SQL query execution and data handling
+
+File location: dashboard/jobs_view.py
+
+This is the first implemented version of the “dashboard layer” in the system architecture.
+
 ## Observability & Reliability
 Basic logging, validation, and data quality checks ensure ingestion reliability and transparency
 without introducing unnecessary infrastructure complexity.

@@ -19,6 +19,23 @@ A job-market analytics platform that combines manual job discovery with automate
 descriptions are manually collected to ensure compliance and accuracy, then processed via a
 Streamlit-based intake tool that automatically extracts and normalises skills, seniority, and role
 families. Insights are exposed through SQL queries, APIs, dashboards, and reports.
+
+### Dashboard Layer (Implemented)
+
+An initial Streamlit dashboard has been developed to enable interactive exploration of ingested job data.
+
+Key capabilities:
+- Visual table view of job postings
+- Selection-based job detail inspection
+- Full access to raw job descriptions without SQL queries
+
+Impact:
+- Reduces reliance on direct SQL querying for data inspection
+- Improves accessibility for non-technical users
+- Enhances demonstration capability for Solutions Engineer-style presentations
+
+This represents the first delivery of a user-facing analytics interface within the platform.
+
 ## Key Design Decision: Manual-First Ingestion
 Rather than scraping job boards, the system prioritises manual discovery followed by automated
 parsing. This approach reduces legal and technical risk, aligns with realistic data volumes for junior
